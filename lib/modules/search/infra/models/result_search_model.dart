@@ -9,5 +9,9 @@ class ResultSearchModel extends ResultSearch {
   final String title;
   final String content;
 
+  Map<String, dynamic> toJson() => _$ResultSearchModelToJson(this);
+  factory ResultSearchModel.fromJson(Map<String, dynamic> json) =>
+      _$ResultSearchModelFromJson(json);
+
   ResultSearchModel({this.image, this.title, this.content});
 }
