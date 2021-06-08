@@ -12,7 +12,7 @@ class ResultSearchModel extends ResultSearch {
   @JsonKey(name: 'url')
   final String content;
 
-  Map<String, dynamic> toJson() => _$ResultSearchModelToJson(this);
+  // Map<String, dynamic> toJson() => _$ResultSearchModelToJson(this);
 
   factory ResultSearchModel.fromJson(Map<String, dynamic> json) =>
       _$ResultSearchModelFromJson(json);

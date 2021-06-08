@@ -22,7 +22,10 @@ void main() {
   testWidgets('should verify widget tree of SearchPage after search success',
       (tester) async {
     when(searchByText(any)).thenAnswer(
-      (_) async => dartz.Right([ResultSearch(title: 'fmiyahira')]),
+      (_) async => dartz.Right([
+        ResultSearch(title: 'fmiyahira'),
+        ResultSearch(title: 'aloha'),
+      ]),
     );
 
     await tester.pumpWidget(MaterialApp(home: SearchPage()));
@@ -38,7 +41,7 @@ void main() {
     final textField = find.byType(TextField);
     await tester.enterText(textField, "fmiyahira");
     await tester.pump(Duration(seconds: 1));
-    expect(find.byType(ListTile), findsOneWidget);
+    expect(find.byType(ListTile), findsNWidgets(2));
     verify(searchByText.call(any)).called(1);
   });
 

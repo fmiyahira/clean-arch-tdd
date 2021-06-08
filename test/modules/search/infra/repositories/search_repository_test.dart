@@ -27,6 +27,14 @@ main() {
 
     final result = await repository.search("fmiyahira");
 
-    expect(result.fold(id, id), isA<DatasourceError>());
+    expect(result.fold(id, id), isA<Exception>());
+  });
+
+  test('shoud return an DatasourceError if datasource failed', () async {
+    when(datasource.getSearch(any)).thenThrow(DatasourceError);
+
+    final result = await repository.search("fmiyahira");
+
+    expect(result.isLeft(), true);
   });
 }

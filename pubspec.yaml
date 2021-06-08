@@ -85,8 +85,12 @@ vars:
     clean: flutter clean
     get: flutter pub get
     runner: flutter pub run build_runner
+    coverage_info: coverage/lcov.info
+    ignore_files: '**/*.g.dart'
 scripts: 
     mobx_build: $runner build
     mobx_watch: $clean & $get & $runner watch
     mobx_watch_delete: $clean & $get & $runner watch --delete-conflicting-outputs 
     mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+    test: flutter test --coverage test/
+    gen_coverage: lcov --remove $coverage_info $ignore_files -o $coverage_info & genhtml $coverage_info -o coverage/html
