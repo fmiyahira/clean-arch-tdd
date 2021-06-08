@@ -27,12 +27,16 @@ dependencies:
   json_serializable: ^3.5.1
   dio: ^3.0.10
   flutter_modular: ^2.0.1
+  flutter_mobx: ^1.1.0+2
+  mobx: ^1.2.1+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^4.1.4
   build_runner: ^1.10.13
+  modular_codegen: ^2.0.0+1
+  mobx_codegen: ^1.1.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,3 +79,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  ## Slidy Scripts 
+vars: 
+    clean: flutter clean
+    get: flutter pub get
+    runner: flutter pub run build_runner
+scripts: 
+    mobx_build: $runner build
+    mobx_watch: $clean & $get & $runner watch
+    mobx_watch_delete: $clean & $get & $runner watch --delete-conflicting-outputs 
+    mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs

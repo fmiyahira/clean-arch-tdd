@@ -45,4 +45,9 @@ void main() {
     final future = githubDatasource.getSearch("fmiyahira");
     expect(future, throwsA(isA<Exception>()));
   });
+
+  test('should return a searchText string concatenate with +', () {
+    final String searchText = 'fernando miyahira';
+    expect(githubDatasource.normalizeText(searchText), 'fernando+miyahira');
+  });
 }
